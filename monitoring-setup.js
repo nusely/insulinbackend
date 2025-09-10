@@ -14,10 +14,13 @@ module.exports = function (app) {
     }
   }
 
-  app.get("/health", (req, res) => {
+  app.get("/api/health", (req, res) => {
     sendPrettyJson(res, {
-      status: "healthy",
+      status: "OK",
+      message: "InsulinLog Backend is running",
       timestamp: new Date().toISOString(),
+      environment: process.env.NODE_ENV || "development",
+      version: "1.0.0"
     });
   });
 
